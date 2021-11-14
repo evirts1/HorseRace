@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus"> 
+<META NAME="Author" CONTENT="eric.virts@gmail.com">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT=""> 
+</HEAD>
+<BODY>
+<script>
+var s = location.search.replace('?horses=','');
+
+var n = 2;
+
+n=( s > 2 && s < 21)?s:14;
+
+for(var i = 0;i<n;i++)
+{
+ document.write('<div id="blueBox'+i+'" style="LEFT: 0px; POSITION: absolute; TOP: 0px;"><IMG SRC=" racehorse7.gif" WIDTH="116" HEIGHT="57" BORDER="0" ALT=""></div>');
+}
+var x = new Array();
+var hspaceStart=10,h=57;
+var tID = setInterval("moveObj()",10); 
+var maxwidth = screen.availWidth-105;
+ for(var i=0;i<n;i++)
+ {   x[i] = 0;
+  eval(document.getElementById("blueBox"+i).style.top =  hspaceStart+(h*i));
+ }
+   
+function moveObj()
+{
+ for(var i=0;i<n;i++)
+ {
+  eval(document.getElementById("blueBox"+i).style.left = x[i]);
+ }
+ for(var i=0;i<n;i++)
+ {
+  x[i]+=Math.random()*Math.random()*4;
+ }
+ for(var i=0;i<n;i++) 
+ {
+  if(x[i]>maxwidth)
+  {
+    clearInterval(tID);
+    alert('Horse '+(i+1)+' Wins!');
+  }
+ }
+ }
+</script>
+</BODY>
+</HTML>
